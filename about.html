@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Popcorn Universe</title>
+  <meta name="description" content="Meet the team behind Popcorn Universe — Canada's all-in-one entertainment booking app built by two founders who believe going out should feel as smooth as staying in." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --pu-black:    #0C0A08;
+      --pu-dark:     #131109;
+      --pu-dark2:    #1A1710;
+      --pu-surface:  #201D14;
+      --pu-surface2: #2A2618;
+      --pu-butter:   #F5C842;
+      --pu-butter-lt:#FFE07A;
+      --pu-caramel:  #C47A2B;
+      --pu-red:      #D94F3D;
+      --pu-muted:    #7A7260;
+      --pu-text:     #F5F0E8;
+      --pu-text-dim: #B8B09E;
+      --pu-border:   rgba(245,200,66,0.14);
+      --pu-border2:  rgba(245,200,66,0.28);
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+      --space-2: 0.5rem;  --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem;  --space-8: 2rem;
+      --space-10: 2.5rem; --space-12: 3rem;   --space-16: 4rem;
+      --space-20: 5rem;   --space-24: 6rem;   --space-32: 8rem;
+      --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+      --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+      --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+      --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+      --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+      --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
+      --text-hero: clamp(3rem,     0.5rem  + 7vw,    7rem);
+      --radius-sm: 0.375rem; --radius-md: 0.5rem;
+      --radius-lg: 0.875rem; --radius-xl: 1.25rem; --radius-full: 9999px;
+      --transition: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; scroll-padding-top: 80px; }
+    body { font-family: var(--font-body); font-size: var(--text-base); color: var(--pu-text); background: var(--pu-black); min-height: 100dvh; line-height: 1.7; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: var(--pu-butter); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--pu-butter-lt); }
+    h1, h2, h3, h4 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    button { cursor: pointer; background: none; border: none; }
+    ::selection { background: rgba(245,200,66,0.2); color: var(--pu-text); }
+    :focus-visible { outline: 2px solid var(--pu-butter); outline-offset: 3px; border-radius: var(--radius-sm); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ─── NOISE ─── */
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+
+    /* ─── PROGRESS ─── */
+    .progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--pu-caramel), var(--pu-butter)); z-index: 200; transform-origin: left; transform: scaleX(0); transition: transform 0.1s linear; }
+
+    /* ─── NAV ─── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      padding: var(--space-4) 0;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    .nav.scrolled { background: rgba(12,10,8,0.9); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(245,200,66,0.08); }
+    .nav__inner { max-width: 1100px; margin: 0 auto; padding: 0 var(--space-6); display: flex; align-items: center; justify-content: space-between; }
+    .nav__logo { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; }
+    .nav__wordmark { font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; color: var(--pu-text); }
+    .nav__wordmark span { color: var(--pu-butter); }
+    .nav__links { display: flex; align-items: center; gap: var(--space-6); }
+    .nav__link { font-size: var(--text-sm); color: var(--pu-muted); transition: color var(--transition); }
+    .nav__link:hover { color: var(--pu-text); }
+    .nav__cta { background: var(--pu-butter); color: var(--pu-black); font-weight: 600; font-size: var(--text-sm); padding: 0.5rem 1.25rem; border-radius: var(--radius-full); transition: background var(--transition), transform var(--transition), box-shadow var(--transition); }
+    .nav__cta:hover { background: var(--pu-butter-lt); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(245,200,66,0.35); }
+
+    /* ─── REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal--delay-1 { transition-delay: 0.1s; }
+    .reveal--delay-2 { transition-delay: 0.22s; }
+    .reveal--delay-3 { transition-delay: 0.34s; }
+
+    /* ─── CONTAINER ─── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 var(--space-6); }
+    .container--narrow { max-width: 760px; margin: 0 auto; padding: 0 var(--space-6); }
+
+    /* ─── GLOW ─── */
+    .glow { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0; }
+    .glow--amber { background: rgba(245,200,66,0.1); }
+    .glow--caramel { background: rgba(196,122,43,0.09); }
+
+    /* ─── SECTION LABEL ─── */
+    .section-label { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pu-butter); margin-bottom: var(--space-4); }
+    .section-title { font-family: var(--font-display); font-weight: 400; font-size: var(--text-3xl); color: var(--pu-text); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: var(--space-5); }
+    .section-title em { font-style: italic; color: var(--pu-butter); }
+    .section-desc { font-size: var(--text-base); color: var(--pu-text-dim); line-height: 1.75; font-weight: 300; }
+
+    /* ═══════════════════════════════
+       HERO
+    ═══════════════════════════════ */
+    .hero {
+      position: relative; min-height: 70vh;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      padding: calc(var(--space-24) + 60px) var(--space-6) var(--space-24);
+      overflow: hidden;
+    }
+    .hero__grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(245,200,66,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(245,200,66,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 80%);
+    }
+    .hero__content { position: relative; z-index: 1; max-width: 760px; }
+    .hero__eyebrow {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      background: rgba(245,200,66,0.08); border: 1px solid rgba(245,200,66,0.22);
+      color: var(--pu-butter); font-size: var(--text-xs); font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.35rem 1rem; border-radius: var(--radius-full); margin-bottom: var(--space-6);
+    }
+    .hero__eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--pu-butter); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.75); } }
+    .hero__headline { font-family: var(--font-display); font-size: var(--text-hero); font-weight: 400; color: var(--pu-text); line-height: 1.05; margin-bottom: var(--space-6); letter-spacing: -0.02em; }
+    .hero__headline em { font-style: italic; color: var(--pu-butter); }
+    .hero__sub { font-size: var(--text-lg); color: var(--pu-text-dim); max-width: 560px; margin: 0 auto; font-weight: 300; line-height: 1.65; }
+
+    /* ═══════════════════════════════
+       WHAT IS POPCORN UNIVERSE
+    ═══════════════════════════════ */
+    .what-section {
+      padding: clamp(var(--space-16), 9vw, var(--space-32)) 0;
+      background: var(--pu-dark); position: relative; overflow: hidden;
+    }
+    .what-section__inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--space-16); align-items: center;
+    }
+    @media (max-width: 860px) { .what-section__inner { grid-template-columns: 1fr; gap: var(--space-10); } }
+    .what-section__stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-8); }
+    .stat-card {
+      background: rgba(32,29,20,0.7); border: 1px solid rgba(245,200,66,0.1);
+      border-radius: var(--radius-xl); padding: var(--space-5) var(--space-5);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .stat-card:hover { border-color: rgba(245,200,66,0.25); transform: translateY(-3px); }
+    .stat-card__num { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--pu-butter); line-height: 1; margin-bottom: var(--space-2); }
+    .stat-card__label { font-size: var(--text-xs); color: var(--pu-muted); font-weight: 500; letter-spacing: 0.04em; }
+    .what-section__visual {
+      position: relative; border-radius: var(--radius-xl); overflow: hidden;
+      border: 1px solid rgba(245,200,66,0.12);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(245,200,66,0.06);
+    }
+    .what-section__visual-inner {
+      background: linear-gradient(135deg, #1a0b0a 0%, #0c0a08 40%, #0a0c18 100%);
+      padding: var(--space-10); display: flex; flex-direction: column; gap: var(--space-5); min-height: 340px; justify-content: center;
+    }
+    .visual-pill {
+      display: inline-flex; align-items: center; gap: var(--space-3);
+      background: rgba(245,200,66,0.06); border: 1px solid rgba(245,200,66,0.15);
+      border-radius: var(--radius-full); padding: var(--space-3) var(--space-5);
+      font-size: var(--text-sm); color: var(--pu-text-dim);
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .visual-pill:hover { border-color: rgba(245,200,66,0.3); background: rgba(245,200,66,0.1); }
+    .visual-pill__icon { font-size: 1.1rem; }
+    .visual-pill--active { background: rgba(245,200,66,0.1); border-color: rgba(245,200,66,0.3); color: var(--pu-text); }
+
+    /* ═══════════════════════════════
+       MISSION & VISION
+    ═══════════════════════════════ */
+    .mv-section {
+      padding: clamp(var(--space-16), 9vw, var(--space-32)) 0;
+      background: var(--pu-black); position: relative; overflow: hidden;
+    }
+    .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-top: var(--space-12); }
+    @media (max-width: 700px) { .mv-grid { grid-template-columns: 1fr; } }
+    .mv-card {
+      background: rgba(20,18,12,0.8); border: 1px solid rgba(245,200,66,0.12);
+      border-radius: var(--radius-xl); padding: var(--space-10) var(--space-8);
+      position: relative; overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .mv-card:hover { border-color: rgba(245,200,66,0.28); transform: translateY(-4px); }
+    .mv-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--pu-butter), transparent);
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .mv-card:hover::before { opacity: 0.5; }
+    .mv-card__eyebrow { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pu-butter); margin-bottom: var(--space-5); }
+    .mv-card__heading { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 400; color: var(--pu-text); line-height: 1.15; letter-spacing: -0.01em; margin-bottom: var(--space-5); }
+    .mv-card__heading em { color: var(--pu-butter); font-style: italic; }
+    .mv-card__body { font-size: var(--text-base); color: var(--pu-text-dim); line-height: 1.75; font-weight: 300; }
+
+    /* ═══════════════════════════════
+       STORY
+    ═══════════════════════════════ */
+    .story-section {
+      padding: clamp(var(--space-16), 9vw, var(--space-32)) 0;
+      background: var(--pu-dark2); position: relative; overflow: hidden;
+    }
+    .story-section__inner { max-width: 720px; margin: 0 auto; text-align: center; }
+    .story-quote {
+      font-family: var(--font-display); font-size: var(--text-xl);
+      font-style: italic; color: var(--pu-text-dim); line-height: 1.6;
+      margin: var(--space-10) 0; position: relative; padding: 0 var(--space-8);
+    }
+    .story-quote::before {
+      content: '"'; position: absolute; top: -0.2em; left: 0;
+      font-size: 4rem; color: rgba(245,200,66,0.2); line-height: 1;
+      font-family: var(--font-display);
+    }
+    .story-body { font-size: var(--text-base); color: var(--pu-text-dim); line-height: 1.8; font-weight: 300; margin-bottom: var(--space-5); }
+    .story-body strong { color: var(--pu-text); font-weight: 600; }
+
+    /* ═══════════════════════════════
+       FOUNDERS
+    ═══════════════════════════════ */
+    .founders-section {
+      padding: clamp(var(--space-16), 9vw, var(--space-32)) 0;
+      background: var(--pu-black); position: relative; overflow: hidden;
+    }
+    .founders-section__header { text-align: center; margin-bottom: var(--space-16); }
+    .founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); max-width: 960px; margin: 0 auto; }
+    @media (max-width: 760px) { .founders-grid { grid-template-columns: 1fr; max-width: 480px; } }
+
+    .founder-card {
+      background: rgba(20,18,12,0.7); border: 1px solid rgba(245,200,66,0.1);
+      border-radius: var(--radius-xl); overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .founder-card:hover { border-color: rgba(245,200,66,0.28); transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(245,200,66,0.06); }
+
+    .founder-card__img-wrap { position: relative; aspect-ratio: 3/4; overflow: hidden; }
+    .founder-card__img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); display: block; }
+    .founder-card:hover .founder-card__img { transform: scale(1.04); }
+    .founder-card__img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(12,10,8,0.92) 0%, rgba(12,10,8,0.3) 50%, transparent 100%);
+    }
+    .founder-card__team-badge {
+      position: absolute; top: var(--space-4); right: var(--space-4);
+      background: rgba(12,10,8,0.85); border: 1px solid rgba(245,200,66,0.3);
+      color: var(--pu-butter); font-size: var(--text-xs); font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.3rem 0.8rem; border-radius: var(--radius-full);
+      backdrop-filter: blur(8px);
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+
+    .founder-card__body { padding: var(--space-6) var(--space-7) var(--space-8); }
+    .founder-card__role { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pu-butter); margin-bottom: var(--space-3); }
+    .founder-card__name { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; color: var(--pu-text); letter-spacing: -0.01em; margin-bottom: var(--space-5); line-height: 1.1; }
+    .founder-card__bio { font-size: var(--text-sm); color: var(--pu-text-dim); line-height: 1.75; font-weight: 300; margin-bottom: var(--space-6); }
+    .founder-card__bio strong { color: var(--pu-text); font-weight: 600; }
+
+    .founder-card__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+    .founder-tag {
+      background: rgba(245,200,66,0.06); border: 1px solid rgba(245,200,66,0.15);
+      color: var(--pu-muted); font-size: 0.72rem; font-weight: 500;
+      padding: 0.25rem 0.7rem; border-radius: var(--radius-full);
+    }
+
+    /* ═══════════════════════════════
+       VALUES
+    ═══════════════════════════════ */
+    .values-section {
+      padding: clamp(var(--space-16), 9vw, var(--space-24)) 0;
+      background: var(--pu-dark); position: relative; overflow: hidden;
+    }
+    .values-section__header { text-align: center; margin-bottom: var(--space-12); }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+    @media (max-width: 760px) { .values-grid { grid-template-columns: 1fr; } }
+    .value-card {
+      background: rgba(26,23,16,0.8); border: 1px solid rgba(245,200,66,0.08);
+      border-radius: var(--radius-xl); padding: var(--space-8) var(--space-6);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .value-card:hover { border-color: rgba(245,200,66,0.22); transform: translateY(-3px); }
+    .value-card__icon { font-size: 1.8rem; margin-bottom: var(--space-4); }
+    .value-card__title { font-size: var(--text-base); font-weight: 600; color: var(--pu-text); margin-bottom: var(--space-3); }
+    .value-card__desc { font-size: var(--text-sm); color: var(--pu-muted); line-height: 1.65; }
+
+    /* ═══════════════════════════════
+       CTA
+    ═══════════════════════════════ */
+    .cta-section {
+      padding: clamp(var(--space-20), 10vw, var(--space-32)) 0;
+      background: var(--pu-black); position: relative; overflow: hidden; text-align: center;
+    }
+    .cta-section__headline { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: 400; letter-spacing: -0.02em; color: var(--pu-text); margin-bottom: var(--space-5); }
+    .cta-section__headline em { color: var(--pu-butter); font-style: italic; }
+    .cta-section__sub { font-size: var(--text-base); color: var(--pu-muted); margin-bottom: var(--space-10); font-weight: 300; }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: var(--space-3);
+      background: var(--pu-butter); color: var(--pu-black);
+      font-weight: 700; font-size: var(--text-base);
+      padding: 1rem 2.5rem; border-radius: var(--radius-full);
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .cta-btn:hover { background: var(--pu-butter-lt); transform: translateY(-2px); box-shadow: 0 10px 40px rgba(245,200,66,0.35); }
+
+    /* ─── FOOTER ─── */
+    .footer { background: var(--pu-black); border-top: 1px solid rgba(245,200,66,0.08); padding: var(--space-10) 0; }
+    .footer__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-6); }
+    .footer__copy { font-size: var(--text-xs); color: var(--pu-muted); }
+    .footer__links { display: flex; gap: var(--space-6); }
+    .footer__link { font-size: var(--text-xs); color: var(--pu-muted); text-decoration: none; transition: color var(--transition); }
+    .footer__link:hover { color: var(--pu-butter); }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="mainNav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#F5C842" fill-opacity="0.1"/>
+          <rect width="32" height="32" rx="8" stroke="#F5C842" stroke-width="0.75" fill="none" stroke-opacity="0.3"/>
+          <path d="M9 13h14l-2 11H11L9 13z" fill="#F5C842" fill-opacity="0.15" stroke="#F5C842" stroke-width="1.2" stroke-linejoin="round"/>
+          <line x1="13" y1="13" x2="12" y2="24" stroke="#F5C842" stroke-width="0.8" stroke-opacity="0.5"/>
+          <line x1="16" y1="13" x2="16" y2="24" stroke="#F5C842" stroke-width="0.8" stroke-opacity="0.5"/>
+          <line x1="19" y1="13" x2="20" y2="24" stroke="#F5C842" stroke-width="0.8" stroke-opacity="0.5"/>
+          <circle cx="11" cy="10" r="2.2" fill="#F5C842" fill-opacity="0.9"/>
+          <circle cx="16" cy="9" r="2.5" fill="#F5C842"/>
+          <circle cx="21" cy="10" r="2.2" fill="#F5C842" fill-opacity="0.9"/>
+        </svg>
+        <span class="nav__wordmark">Popcorn<span> Universe</span></span>
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="privacy.html" class="nav__link">Privacy</a>
+        <a href="index.html#waitlist" class="nav__cta">Join Waitlist</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero__grid"></div>
+    <div class="glow glow--amber" style="width:600px;height:500px;top:-150px;left:50%;transform:translateX(-50%);position:absolute;"></div>
+    <div class="hero__content">
+      <div class="hero__eyebrow reveal">Our Story</div>
+      <h1 class="hero__headline reveal reveal--delay-1">We're the ones who <em>actually</em> go to the movies.</h1>
+      <p class="hero__sub reveal reveal--delay-2">Two builders, one big frustration, and a mission to make entertainment effortlessly accessible for every Canadian.</p>
+    </div>
+  </section>
+
+  <!-- ═══ WHAT IS POPCORN UNIVERSE ═══ -->
+  <section class="what-section">
+    <div class="glow glow--caramel" style="width:500px;height:400px;bottom:-100px;right:-100px;position:absolute;"></div>
+    <div class="container">
+      <div class="what-section__inner">
+        <div class="reveal">
+          <div class="section-label">What We're Building</div>
+          <h2 class="section-title">One app for <em>all</em> of Canada's entertainment.</h2>
+          <p class="section-desc" style="margin-bottom: var(--space-5);">Popcorn Universe is a Canadian entertainment booking platform — currently in active development — designed to be the single place where you discover, explore, and book movies, live theatre, stand-up comedy, and concerts.</p>
+          <p class="section-desc">No more bouncing between five different apps. No more broken booking flows. No more settling for bad seats because you didn't know a better option existed. We're building the app that entertainment deserves.</p>
+          <div class="what-section__stat-grid">
+            <div class="stat-card">
+              <div class="stat-card__num">4</div>
+              <div class="stat-card__label">Entertainment categories</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__num">&lt; 60s</div>
+              <div class="stat-card__label">Average booking time</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__num">2,800+</div>
+              <div class="stat-card__label">Canadians already waiting</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__num">MVP</div>
+              <div class="stat-card__label">In active development</div>
+            </div>
+          </div>
+        </div>
+        <div class="what-section__visual reveal reveal--delay-2">
+          <div class="what-section__visual-inner">
+            <div class="visual-pill visual-pill--active"><span class="visual-pill__icon">🎬</span> Movies &amp; Theatres</div>
+            <div class="visual-pill"><span class="visual-pill__icon">🎭</span> Live Theatre &amp; Performance</div>
+            <div class="visual-pill"><span class="visual-pill__icon">🎤</span> Stand-up Comedy</div>
+            <div class="visual-pill"><span class="visual-pill__icon">🎵</span> Concerts &amp; Music</div>
+            <div style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid rgba(245,200,66,0.1);">
+              <div style="font-size: var(--text-xs); color: var(--pu-muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-3);">Coming to</div>
+              <div style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
+                <span style="background: rgba(245,200,66,0.08); border: 1px solid rgba(245,200,66,0.18); color: var(--pu-butter); font-size: 0.72rem; padding: 0.25rem 0.7rem; border-radius: 999px;">Toronto</span>
+                <span style="background: rgba(245,200,66,0.08); border: 1px solid rgba(245,200,66,0.18); color: var(--pu-butter); font-size: 0.72rem; padding: 0.25rem 0.7rem; border-radius: 999px;">Waterloo</span>
+                <span style="background: rgba(245,200,66,0.08); border: 1px solid rgba(245,200,66,0.18); color: var(--pu-butter); font-size: 0.72rem; padding: 0.25rem 0.7rem; border-radius: 999px;">Vancouver</span>
+                <span style="background: rgba(245,200,66,0.05); border: 1px solid rgba(245,200,66,0.1); color: var(--pu-muted); font-size: 0.72rem; padding: 0.25rem 0.7rem; border-radius: 999px;">+ 9 more</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MISSION & VISION ═══ -->
+  <section class="mv-section">
+    <div class="glow glow--amber" style="width:700px;height:400px;top:50%;left:50%;transform:translate(-50%,-50%);position:absolute;"></div>
+    <div class="container--narrow">
+      <div class="reveal" style="text-align:center;">
+        <div class="section-label" style="text-align:center;">Why We Exist</div>
+        <h2 class="section-title" style="text-align:center;">Driven by purpose,<br><em>built with intention.</em></h2>
+      </div>
+      <div class="mv-grid">
+        <div class="mv-card reveal reveal--delay-1">
+          <div class="mv-card__eyebrow">Our Mission</div>
+          <h3 class="mv-card__heading">Make entertainment <em>effortlessly accessible</em> for every Canadian.</h3>
+          <p class="mv-card__body">Entertainment is one of the most human things we do — it brings people together, creates shared memories, and gives life texture. Our job is to make sure the technology never gets in the way of that. Every decision we make is in service of one goal: remove the friction, and let the experience speak for itself.</p>
+        </div>
+        <div class="mv-card reveal reveal--delay-2">
+          <div class="mv-card__eyebrow">Our Vision</div>
+          <h3 class="mv-card__heading">A Canada where going out feels as <em>smooth as staying in.</em></h3>
+          <p class="mv-card__body">Streaming services have perfected the experience of entertainment at home — one app, everything you need, in seconds. We believe the same should be true for going out. No friction, no guesswork, no compromise. Just the experience you came for, exactly as it should be.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STORY ═══ -->
+  <section class="story-section">
+    <div class="glow glow--caramel" style="width:500px;height:400px;bottom:0;right:-150px;position:absolute;"></div>
+    <div class="container--narrow">
+      <div class="reveal" style="text-align:center; margin-bottom: var(--space-8);">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title">Born from a <em>real frustration.</em></h2>
+      </div>
+      <div class="story-section__inner reveal reveal--delay-1">
+        <p class="story-body">We came to Canada as newcomers, full of ambition and ready to explore everything this country has to offer. And Canada has a lot to offer — incredible theatres, world-class concerts, comedy festivals, blockbuster IMAX experiences. <strong>The entertainment is there. The way to access it isn't.</strong></p>
+
+        <blockquote class="story-quote">
+          "We spent more time figuring out how to book a movie than actually watching it. That felt wrong — and fixable."
+        </blockquote>
+
+        <p class="story-body">Between juggling different apps for different theatres, poorly designed booking flows, no real way to discover what's happening near you, and a checkout experience that felt like it was designed to make you give up — we kept asking the same question: <strong>why hasn't someone fixed this?</strong></p>
+        <p class="story-body">So we decided to. Popcorn Universe is our answer — not just for us, but for the millions of Canadians who love entertainment and deserve a platform that respects their time and their experience.</p>
+        <p class="story-body">We're two people building something real, in public, from Waterloo. And we're just getting started.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOUNDERS ═══ -->
+  <section class="founders-section">
+    <div class="glow glow--amber" style="width:600px;height:400px;top:0;left:-150px;position:absolute;"></div>
+    <div class="glow glow--caramel" style="width:400px;height:400px;bottom:0;right:-100px;position:absolute;"></div>
+    <div class="container">
+      <div class="founders-section__header reveal">
+        <div class="section-label">The Team</div>
+        <h2 class="section-title">Meet the <em>builders.</em></h2>
+        <p class="section-desc" style="max-width:500px;margin:0 auto;">Two perspectives. One vision. Equal obsession with getting this right.</p>
+      </div>
+      <div class="founders-grid">
+
+        <!-- NISHANT -->
+        <div class="founder-card reveal reveal--delay-1">
+          <div class="founder-card__img-wrap">
+            <img src="nishant.png" alt="Nishant Bhatt — CEO & Co-Founder of Popcorn Universe, watching a movie with a bucket of popcorn" class="founder-card__img" loading="lazy" />
+            <div class="founder-card__img-overlay"></div>
+            <div class="founder-card__team-badge"><svg width="16" height="16" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-right:5px;flex-shrink:0;"><circle cx="50" cy="50" r="50" fill="#B22234"/><circle cx="50" cy="50" r="40" fill="white"/><circle cx="50" cy="50" r="30" fill="#B22234"/><circle cx="50" cy="50" r="20" fill="#1B3F8B"/><polygon points="50,8 61,38 93,38 68,57 78,88 50,68 22,88 32,57 7,38 39,38" fill="white" transform="translate(0,24) scale(0.52) translate(0,-24)"/><polygon points="50,32 56,50 75,50 60,61 66,79 50,68 34,79 40,61 25,50 44,50" fill="white"/></svg>Team Captain America</div>
+          </div>
+          <div class="founder-card__body">
+            <div class="founder-card__role">CEO &amp; Co-Founder</div>
+            <h3 class="founder-card__name">Nishant Bhatt</h3>
+            <p class="founder-card__bio">Nishant brings the vision and the business backbone to Popcorn Universe. With a background spanning <strong>IT project management, business development, and operations</strong>, he owns everything that isn't code — product strategy, marketing, partnerships, and the user experience that ties it all together.</p>
+            <p class="founder-card__bio">Born and raised in India, now building in Waterloo — Nishant's biggest superpower is seeing the gap between what exists and what should exist, then doing something about it.</p>
+            <div class="founder-card__tags">
+              <span class="founder-tag">Product Strategy</span>
+              <span class="founder-tag">Business Development</span>
+              <span class="founder-tag">Project Management</span>
+              <span class="founder-tag">Marketing</span>
+              <span class="founder-tag">IT Background</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROHAN -->
+        <div class="founder-card reveal reveal--delay-2">
+          <div class="founder-card__img-wrap">
+            <img src="rohan.png" alt="Rohan Nirmal — CTO & Co-Founder of Popcorn Universe, watching a movie with a drink" class="founder-card__img" loading="lazy" />
+            <div class="founder-card__img-overlay"></div>
+            <div class="founder-card__team-badge"><svg width="16" height="16" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><defs><radialGradient id="arcglow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/><stop offset="40%" stop-color="#40d0ff" stop-opacity="0.95"/><stop offset="100%" stop-color="#0080c0" stop-opacity="0.7"/></radialGradient><filter id="glow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="50" cy="50" r="48" fill="#1a1a2e" stroke="#8899aa" stroke-width="4"/><circle cx="50" cy="50" r="42" fill="url(#arcglow)" opacity="0.85" filter="url(#glow)"/><line x1="50" y1="8" x2="50" y2="30" stroke="#aabbcc" stroke-width="3" stroke-linecap="round"/><line x1="50" y1="70" x2="50" y2="92" stroke="#aabbcc" stroke-width="3" stroke-linecap="round"/><line x1="8" y1="50" x2="30" y2="50" stroke="#aabbcc" stroke-width="3" stroke-linecap="round"/><line x1="70" y1="50" x2="92" y2="50" stroke="#aabbcc" stroke-width="3" stroke-linecap="round"/><line x1="21" y1="21" x2="36" y2="36" stroke="#aabbcc" stroke-width="2.5" stroke-linecap="round"/><line x1="64" y1="64" x2="79" y2="79" stroke="#aabbcc" stroke-width="2.5" stroke-linecap="round"/><line x1="79" y1="21" x2="64" y2="36" stroke="#aabbcc" stroke-width="2.5" stroke-linecap="round"/><line x1="21" y1="79" x2="36" y2="64" stroke="#aabbcc" stroke-width="2.5" stroke-linecap="round"/><polygon points="50,28 68,62 32,62" fill="none" stroke="#cceeff" stroke-width="3.5" stroke-linejoin="round"/><polygon points="50,35 62,57 38,57" fill="white" opacity="0.7"/><circle cx="50" cy="50" r="5" fill="white" opacity="0.95"/></svg>Team Iron Man</div>
+          </div>
+          <div class="founder-card__body">
+            <div class="founder-card__role">CTO &amp; Co-Founder</div>
+            <h3 class="founder-card__name">Rohan Nirmal</h3>
+            <p class="founder-card__bio">Rohan is the engineer behind the curtain — the one who turns the vision into something you can actually tap and swipe. He leads all <strong>app development, web production, and technical architecture</strong> for Popcorn Universe, building both the Flutter mobile app and the web platform from the ground up.</p>
+            <p class="founder-card__bio">Where others see complexity, Rohan sees a problem with a clean solution waiting to be written. He's the reason Popcorn Universe works as beautifully as it looks.</p>
+            <div class="founder-card__tags">
+              <span class="founder-tag">Flutter / Mobile</span>
+              <span class="founder-tag">Web Development</span>
+              <span class="founder-tag">App Architecture</span>
+              <span class="founder-tag">Full-Stack</span>
+              <span class="founder-tag">Production</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VALUES ═══ -->
+  <section class="values-section">
+    <div class="container">
+      <div class="values-section__header reveal">
+        <div class="section-label">What We Stand For</div>
+        <h2 class="section-title">Our <em>core values.</em></h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal reveal--delay-1">
+          <div class="value-card__icon">🎯</div>
+          <div class="value-card__title">Simplicity Over Everything</div>
+          <div class="value-card__desc">Every feature, every screen, every tap is designed to be the simplest it can be. If it's complicated, it's not finished.</div>
+        </div>
+        <div class="value-card reveal reveal--delay-2">
+          <div class="value-card__icon">🇨🇦</div>
+          <div class="value-card__title">Built for Canada</div>
+          <div class="value-card__desc">We're not adapting a foreign product to fit Canada. We're building something that starts here, for the people who live here.</div>
+        </div>
+        <div class="value-card reveal reveal--delay-3">
+          <div class="value-card__icon">🔒</div>
+          <div class="value-card__title">Privacy by Default</div>
+          <div class="value-card__desc">Your data is yours. We collect only what we need, use it only for what we said, and never sell it to anyone. Ever.</div>
+        </div>
+        <div class="value-card reveal reveal--delay-1">
+          <div class="value-card__icon">⚡</div>
+          <div class="value-card__title">Speed as Respect</div>
+          <div class="value-card__desc">Your time is the most valuable thing you own. We treat every second you spend in our app as borrowed — and we make it count.</div>
+        </div>
+        <div class="value-card reveal reveal--delay-2">
+          <div class="value-card__icon">🌱</div>
+          <div class="value-card__title">Build in Public</div>
+          <div class="value-card__desc">We share our progress, listen to our community, and build with you — not just for you. The waitlist is the beginning of that conversation.</div>
+        </div>
+        <div class="value-card reveal reveal--delay-3">
+          <div class="value-card__icon">🎬</div>
+          <div class="value-card__title">Entertainment First</div>
+          <div class="value-card__desc">We're fans first, builders second. Every product decision gets filtered through one lens — does this make going out better?</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="cta-section">
+    <div class="glow glow--amber" style="width:600px;height:400px;top:50%;left:50%;transform:translate(-50%,-50%);position:absolute;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="hero__eyebrow reveal" style="margin: 0 auto var(--space-6);">Be Part of the Story</div>
+      <h2 class="cta-section__headline reveal reveal--delay-1">Ready to experience <em>entertainment unleashed?</em></h2>
+      <p class="cta-section__sub reveal reveal--delay-2">Join 2,800+ Canadians already on the waitlist. First members get exclusive launch perks.</p>
+      <a href="index.html#waitlist" class="cta-btn reveal reveal--delay-3">🍿 Join the Waitlist</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-2);">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="32" height="32" rx="8" fill="#F5C842" fill-opacity="0.08"/>
+              <path d="M9 13h14l-2 11H11L9 13z" fill="#F5C842" fill-opacity="0.15" stroke="#F5C842" stroke-width="1.2" stroke-linejoin="round"/>
+              <circle cx="16" cy="9" r="2.5" fill="#F5C842"/>
+              <circle cx="11" cy="10" r="2" fill="#F5C842" fill-opacity="0.8"/>
+              <circle cx="21" cy="10" r="2" fill="#F5C842" fill-opacity="0.8"/>
+            </svg>
+            <span style="font-weight:700;font-size:0.95rem;color:var(--pu-text);">Popcorn <span style="color:var(--pu-butter);">Universe</span></span>
+          </div>
+          <p class="footer__copy">Entertainment Unleashed. Coming soon to Canada.</p>
+        </div>
+        <div class="footer__links">
+          <a href="index.html" class="footer__link">Home</a>
+          <a href="index.html#waitlist" class="footer__link">Join Waitlist</a>
+          <a href="privacy.html" class="footer__link">Privacy Policy</a>
+          <a href="mailto:hello@popcornuniverse.ca" class="footer__link">Contact</a>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(245,200,66,0.06);margin-top:var(--space-8);padding-top:var(--space-6);">
+        <p class="footer__copy">© 2026 Popcorn Universe Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const progress = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      document.getElementById('progressBar').style.transform = `scaleX(${progress})`;
+      document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+<script data-pplx-inline-edit>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==1)return;
+    try{
+      var cs=getComputedStyle(orig);
+      var t='';
+      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
+      clone.style.cssText=t;
+    }catch(e){}
+    var oc=orig.children,cc=clone.children;
+    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
+  }
+  function stripExternal(clone){
+    var imgs=clone.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].getAttribute('src');
+      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
+    }
+    var all=clone.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){
+      var st=all[i].style.cssText;
+      if(st&&st.indexOf('url(')>=0){
+        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
+      }
+    }
+  }
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
+    var scrollX=window.scrollX||window.pageXOffset||0;
+    var scrollY=window.scrollY||window.pageYOffset||0;
+    var w=window.innerWidth,h=window.innerHeight;
+    try{
+      var clone=document.documentElement.cloneNode(true);
+      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
+      for(var i=0;i<rm.length;i++){rm[i].remove();}
+      inlineAll(document.documentElement,clone);
+      stripExternal(clone);
+      var html=new XMLSerializer().serializeToString(clone);
+      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+        +'<foreignObject width="100%" height="100%">'
+        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
+        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
+        +html+'</div></div></foreignObject></svg>';
+      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0);
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.onerror=function(){
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.src=svgUrl;
+    }catch(err){
+      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+    }
+  });
+})();
+</script></body>
+</html>
