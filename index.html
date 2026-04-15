@@ -322,6 +322,34 @@
       border-color: rgba(245,200,66,0.5);
       box-shadow: 0 0 0 3px rgba(245,200,66,0.1);
     }
+    select.form-input {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7260' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.9rem center;
+      padding-right: 2.25rem;
+      cursor: pointer;
+    }
+    select.form-input:focus {
+      border-color: rgba(245,200,66,0.5);
+      box-shadow: 0 0 0 3px rgba(245,200,66,0.1);
+    }
+    select.form-input option {
+      background: #1A1710;
+      color: var(--pu-text);
+    }
+    select.form-input option[value=""] {
+      color: var(--pu-muted);
+    }
+    select.form-input option[disabled] {
+      color: var(--pu-butter);
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: #131109;
+    }
     .form-email { grid-column: 1 / -1; }
     .form-submit {
       width: 100%;
@@ -970,7 +998,59 @@
           <form id="waitlistForm" onsubmit="handleSubmit(event)">
             <div class="form-row">
               <input class="form-input" type="text" placeholder="Your name" name="name" required autocomplete="name" />
-              <input class="form-input" type="text" placeholder="City (e.g. Toronto)" name="city" required autocomplete="address-level2" />
+              <select class="form-input" name="city" required>
+                <option value="" disabled selected>Select your city</option>
+                <optgroup label="── Ontario ──" disabled></optgroup>
+                <option value="Toronto">Toronto</option>
+                <option value="Mississauga">Mississauga</option>
+                <option value="Brampton">Brampton</option>
+                <option value="Hamilton">Hamilton</option>
+                <option value="Ottawa">Ottawa</option>
+                <option value="Kitchener">Kitchener</option>
+                <option value="Waterloo">Waterloo</option>
+                <option value="London">London</option>
+                <option value="Windsor">Windsor</option>
+                <option value="Markham">Markham</option>
+                <option value="Vaughan">Vaughan</option>
+                <option value="Guelph">Guelph</option>
+                <option value="Barrie">Barrie</option>
+                <option value="Kingston">Kingston</option>
+                <option value="Oshawa">Oshawa</option>
+                <option value="St. Catharines">St. Catharines</option>
+                <option value="Niagara Falls">Niagara Falls</option>
+                <option value="Sudbury">Sudbury</option>
+                <option value="Thunder Bay">Thunder Bay</option>
+                <optgroup label="── British Columbia ──" disabled></optgroup>
+                <option value="Vancouver">Vancouver</option>
+                <option value="Surrey">Surrey</option>
+                <option value="Burnaby">Burnaby</option>
+                <option value="Richmond">Richmond</option>
+                <option value="Coquitlam">Coquitlam</option>
+                <option value="Kelowna">Kelowna</option>
+                <option value="Victoria">Victoria</option>
+                <option value="Abbotsford">Abbotsford</option>
+                <optgroup label="── Alberta ──" disabled></optgroup>
+                <option value="Calgary">Calgary</option>
+                <option value="Edmonton">Edmonton</option>
+                <option value="Lethbridge">Lethbridge</option>
+                <option value="Red Deer">Red Deer</option>
+                <option value="Airdrie">Airdrie</option>
+                <option value="Sherwood Park">Sherwood Park</option>
+                <option value="Spruce Grove">Spruce Grove</option>
+                <option value="St. Albert">St. Albert</option>
+                <optgroup label="── Quebec ──" disabled></optgroup>
+                <option value="Montreal">Montreal</option>
+                <option value="Quebec City">Quebec City</option>
+                <option value="Laval">Laval</option>
+                <option value="Gatineau">Gatineau</option>
+                <option value="Longueuil">Longueuil</option>
+                <option value="Sherbrooke">Sherbrooke</option>
+                <option value="Saguenay">Saguenay</option>
+                <option value="Trois-Rivières">Trois-Rivières</option>
+                <option value="Terrebonne">Terrebonne</option>
+                <option value="Saint-Jérôme">Saint-Jérôme</option>
+                <option value="Brossard">Brossard</option>
+              </select>
             </div>
             <div class="form-row">
               <input class="form-input form-email" type="email" placeholder="Your email address" name="email" required autocomplete="email" />
@@ -1419,7 +1499,59 @@
           <form onsubmit="handleSubmit2(event)">
             <div class="form-row">
               <input class="form-input" type="text" placeholder="Your name" name="name" required autocomplete="name" />
-              <input class="form-input" type="text" placeholder="Your city" name="city" required />
+              <select class="form-input" name="city" required>
+                <option value="" disabled selected>Select your city</option>
+                <optgroup label="── Ontario ──" disabled></optgroup>
+                <option value="Toronto">Toronto</option>
+                <option value="Mississauga">Mississauga</option>
+                <option value="Brampton">Brampton</option>
+                <option value="Hamilton">Hamilton</option>
+                <option value="Ottawa">Ottawa</option>
+                <option value="Kitchener">Kitchener</option>
+                <option value="Waterloo">Waterloo</option>
+                <option value="London">London</option>
+                <option value="Windsor">Windsor</option>
+                <option value="Markham">Markham</option>
+                <option value="Vaughan">Vaughan</option>
+                <option value="Guelph">Guelph</option>
+                <option value="Barrie">Barrie</option>
+                <option value="Kingston">Kingston</option>
+                <option value="Oshawa">Oshawa</option>
+                <option value="St. Catharines">St. Catharines</option>
+                <option value="Niagara Falls">Niagara Falls</option>
+                <option value="Sudbury">Sudbury</option>
+                <option value="Thunder Bay">Thunder Bay</option>
+                <optgroup label="── British Columbia ──" disabled></optgroup>
+                <option value="Vancouver">Vancouver</option>
+                <option value="Surrey">Surrey</option>
+                <option value="Burnaby">Burnaby</option>
+                <option value="Richmond">Richmond</option>
+                <option value="Coquitlam">Coquitlam</option>
+                <option value="Kelowna">Kelowna</option>
+                <option value="Victoria">Victoria</option>
+                <option value="Abbotsford">Abbotsford</option>
+                <optgroup label="── Alberta ──" disabled></optgroup>
+                <option value="Calgary">Calgary</option>
+                <option value="Edmonton">Edmonton</option>
+                <option value="Lethbridge">Lethbridge</option>
+                <option value="Red Deer">Red Deer</option>
+                <option value="Airdrie">Airdrie</option>
+                <option value="Sherwood Park">Sherwood Park</option>
+                <option value="Spruce Grove">Spruce Grove</option>
+                <option value="St. Albert">St. Albert</option>
+                <optgroup label="── Quebec ──" disabled></optgroup>
+                <option value="Montreal">Montreal</option>
+                <option value="Quebec City">Quebec City</option>
+                <option value="Laval">Laval</option>
+                <option value="Gatineau">Gatineau</option>
+                <option value="Longueuil">Longueuil</option>
+                <option value="Sherbrooke">Sherbrooke</option>
+                <option value="Saguenay">Saguenay</option>
+                <option value="Trois-Rivières">Trois-Rivières</option>
+                <option value="Terrebonne">Terrebonne</option>
+                <option value="Saint-Jérôme">Saint-Jérôme</option>
+                <option value="Brossard">Brossard</option>
+              </select>
             </div>
             <div class="form-row">
               <input class="form-input form-email" type="email" placeholder="Email address" name="email" required autocomplete="email" />
