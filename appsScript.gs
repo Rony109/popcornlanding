@@ -31,7 +31,7 @@ function doPost(e) {
 function sendConfirmationEmail(name, email) {
   const firstName = (name && name.trim()) ? name.trim().split(" ")[0] : "there";
   const subject   = "You are on the list, " + firstName + " \uD83C\uDF7F";
-  const unsubUrl  = "https://popcornuniverse.ca/unsubscribe?email=" + encodeURIComponent(email);
+  const unsubUrl  = "https://popcornuniverse.org/unsubscribe?email=" + encodeURIComponent(email);
 
   const html = getEmailTemplate(firstName, unsubUrl);
 
@@ -106,7 +106,7 @@ function getEmailTemplate(firstName, unsubUrl) {
           <!-- HEADER -->
           <tr>
             <td align="center" bgcolor="#0C0A08" style="padding:22px 28px 18px; border-radius:10px 10px 0 0;">
-              <img src="https://popcornuniverse.ca/Secondary%20Logo/Logo-H_Light.png" alt="Popcorn Universe" height="40" style="display:block;border:0;" />
+              <img src="https://popcornlanding.pages.dev/Secondary%20Logo/Logo-H_Light.png" alt="Popcorn Universe" height="40" style="display:block;border:0;" />
             </td>
           </tr>
  
@@ -153,7 +153,7 @@ function getEmailTemplate(firstName, unsubUrl) {
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="btn">
                 <tr>
                   <td align="center" bgcolor="#F5C842" style="border-radius:5px;">
-                    <a href="https://popcornuniverse.ca" style="display:inline-block;font-size:14px;font-weight:700;color:#0C0A08;padding:12px 24px;letter-spacing:0.2px;">Stay Tuned &rarr;</a>
+                    <a href="https://popcornuniverse.org" style="display:inline-block;font-size:14px;font-weight:700;color:#0C0A08;padding:12px 24px;letter-spacing:0.2px;">Stay Tuned &rarr;</a>
                   </td>
                 </tr>
               </table>
@@ -174,7 +174,7 @@ function getEmailTemplate(firstName, unsubUrl) {
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="btn">
                 <tr>
                   <td align="center" bgcolor="#1A1710" style="border:2px solid #F5C842;border-radius:5px;">
-                    <a href="mailto:feedback@popcornuniverse.ca" style="display:inline-block;font-size:14px;font-weight:700;color:#F5C842;padding:10px 24px;letter-spacing:0.2px;">Share Your Feedback &rarr;</a>
+                    <a href="mailto:feedback@popcornuniverse.org" style="display:inline-block;font-size:14px;font-weight:700;color:#F5C842;padding:10px 24px;letter-spacing:0.2px;">Share Your Feedback &rarr;</a>
                   </td>
                 </tr>
               </table>
@@ -255,7 +255,7 @@ function getEmailTemplate(firstName, unsubUrl) {
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr>
                   <td align="center" style="padding-bottom:14px;">
-                    <img src="https://popcornuniverse.ca/LogoMark/LogoMark-Light.png" alt="Popcorn Universe" width="28" height="28" style="display:inline-block;border:0;opacity:0.6;" />
+                    <img src="https://popcornlanding.pages.dev/LogoMark/LogoMark-Light.png" alt="Popcorn Universe" width="28" height="28" style="display:inline-block;border:0;opacity:0.6;" />
                   </td>
                 </tr>
                 <tr>
@@ -278,7 +278,7 @@ function getEmailTemplate(firstName, unsubUrl) {
                     <p style="font-size:11px;color:#7A7260;margin:0;line-height:1.7;">
                       Don't want to hear from us?&nbsp;<a href="${unsubUrl}" style="color:#C47A2B;text-decoration:underline;font-weight:500;">Unsubscribe</a>
                       &nbsp;&middot;&nbsp;
-                      <a href="https://popcornuniverse.ca/privacy" style="color:#7A7260;text-decoration:underline;">Privacy Policy</a>
+                      <a href="https://popcornuniverse.org/privacy" style="color:#7A7260;text-decoration:underline;">Privacy Policy</a>
                     </p>
                   </td>
                 </tr>
