@@ -947,24 +947,7 @@
     <div class="container">
       <div class="nav__inner">
         <a href="#" class="nav__logo">
-          <!-- SVG Logo -->
-          <svg class="nav__logo-svg" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Popcorn Universe logo" xmlns="http://www.w3.org/2000/svg">
-            <rect width="32" height="32" rx="8" fill="#F5C842" fill-opacity="0.1"/>
-            <rect width="32" height="32" rx="8" stroke="#F5C842" stroke-width="0.75" fill="none" stroke-opacity="0.3"/>
-            <!-- Popcorn bucket shape -->
-            <path d="M9 13h14l-2 11H11L9 13z" fill="#F5C842" fill-opacity="0.15" stroke="#F5C842" stroke-width="1.2" stroke-linejoin="round"/>
-            <!-- Striped lines on bucket -->
-            <line x1="13" y1="13" x2="12" y2="24" stroke="#F5C842" stroke-width="0.8" stroke-opacity="0.5"/>
-            <line x1="16" y1="13" x2="16" y2="24" stroke="#F5C842" stroke-width="0.8" stroke-opacity="0.5"/>
-            <line x1="19" y1="13" x2="20" y2="24" stroke="#F5C842" stroke-width="0.8" stroke-opacity="0.5"/>
-            <!-- Popcorn puffs -->
-            <circle cx="11" cy="10" r="2.2" fill="#F5C842" fill-opacity="0.9"/>
-            <circle cx="16" cy="9" r="2.5" fill="#F5C842"/>
-            <circle cx="21" cy="10" r="2.2" fill="#F5C842" fill-opacity="0.9"/>
-            <circle cx="13.5" cy="8.5" r="1.8" fill="#FFE07A" fill-opacity="0.7"/>
-            <circle cx="18.5" cy="8.5" r="1.8" fill="#FFE07A" fill-opacity="0.7"/>
-          </svg>
-          <span class="nav__wordmark">Popcorn<span> Universe</span></span>
+          <img src="Secondary%20Logo/Logo-H_Light.png" alt="Popcorn Universe" height="38" style="display:block;" />
         </a>
         <a href="#waitlist" class="nav__cta">Join Waitlist</a>
       </div>
@@ -1574,15 +1557,8 @@
     <div class="container">
       <div class="footer__inner">
         <div>
-          <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-2);">
-            <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="32" height="32" rx="8" fill="#F5C842" fill-opacity="0.08"/>
-              <path d="M9 13h14l-2 11H11L9 13z" fill="#F5C842" fill-opacity="0.15" stroke="#F5C842" stroke-width="1.2" stroke-linejoin="round"/>
-              <circle cx="16" cy="9" r="2.5" fill="#F5C842"/>
-              <circle cx="11" cy="10" r="2" fill="#F5C842" fill-opacity="0.8"/>
-              <circle cx="21" cy="10" r="2" fill="#F5C842" fill-opacity="0.8"/>
-            </svg>
-            <span style="font-weight:700;font-size:0.95rem;color:var(--pu-text);">Popcorn <span style="color:var(--pu-butter);">Universe</span></span>
+          <div style="margin-bottom:var(--space-2);">
+            <img src="Secondary%20Logo/Logo-H_Light.png" alt="Popcorn Universe" height="30" style="display:block;" />
           </div>
           <p class="footer__copy">Entertainment Unleashed. Coming soon to Canada.</p>
         </div>
@@ -1708,7 +1684,7 @@
         await fetch(SHEET_URL, {
           method: "POST",
           mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "text/plain;charset=UTF-8" },
           body: JSON.stringify(data),
         });
 
